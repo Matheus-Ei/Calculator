@@ -15,7 +15,7 @@ class Window(QWidget):
         super().__init__()
 
     def __make(self):
-        self.setWindowTitle('Exemplo PyQt5')
+        self.setWindowTitle("Calculadora")
         self.setGeometry(300, 300, 300, 200)
 
     def __add_text(self, layout, text, font="Arial", size=24):
@@ -29,9 +29,16 @@ class Window(QWidget):
         return label
 
     def __add_button(self, layout, text, function):
-        self.button = QPushButton(text, self)
-        self.button.clicked.connect(function)
-        layout.addWidget(self.button)
+        button = QPushButton(text, self)
+        button.clicked.connect(function)
+        layout.addWidget(button)
+
+    def __add_input(self, layout, placeholder):
+        input_field = QLineEdit(self)
+        input_field.setPlaceholderText(placeholder)
+        layout.addWidget(input_field)
+
+        return input_field
 
     def __add_widgets(self):
         layout = QVBoxLayout()
@@ -39,9 +46,8 @@ class Window(QWidget):
         self.header = self.__add_text(layout, "Calculadora")
         self.results = self.__add_text(layout, "", size=12)
 
-        self.input_field = QLineEdit(self)
-        self.input_field.setPlaceholderText("Digite uma expressão com + - * ou /")
-        layout.addWidget(self.input_field)
+        placeholder = "Digite uma expressão com + - * ou /"
+        self.input_field = self.__add_input(layout, placeholder)
 
         self.__add_button(layout, "Calcular", self.__calc)
         self.__add_button(layout, "Fechar", self.close)
