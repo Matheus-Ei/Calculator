@@ -48,6 +48,8 @@ class Window(QWidget):
         self.header = self.__add_text(layout, "Calculadora")
         self.results = self.__add_text(layout, "", size=12)
 
+        self.__add_text(layout, "Funciona apenas com um digito sem espaços", size=8)
+        self.__add_text(layout, "Como '1+3*4-2/8'", size=8)
         placeholder = "Digite uma expressão com + - * ou /"
         self.input_field = self.__add_input(layout, placeholder)
 
