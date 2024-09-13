@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import (QApplication,
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 
+from calc import Expression
+
 
 class Window(QWidget):
     def __init__(self):
@@ -55,11 +57,12 @@ class Window(QWidget):
         self.setLayout(layout)
 
     def __calc(self):
-        self.expression = self.input_field.text()
+        expression = self.input_field.text()
 
-        # Calculations
+        calculator = Expression(str(expression))
+        calcs = str(calculator.calc()[0])
 
-        self.results.setText(self.expression)
+        self.results.setText(calcs)
 
     def run(self):
         self.__make()

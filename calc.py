@@ -54,7 +54,6 @@ class Expression:
             index = array_expression.index(operator)
             return index
         except ValueError:
-            print(f"O operator '{operator}' não está na lista")
             return False
 
     def __calc_from_index(self, operator, array_expression):
