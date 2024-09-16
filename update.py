@@ -43,10 +43,9 @@ class Update(QWidget):
         return input_field
 
     def __dont_update(self):
-        subprocess.Popen(["python3", "./window.py"],
+        subprocess.Popen("source ./.venv/bin/activate && python3 ./window.py",
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
-        self.close()
         exit()
 
     def __add_widgets(self):
@@ -66,7 +65,7 @@ class Update(QWidget):
     def __relaunch(self):
         self.__update()
 
-        subprocess.Popen(["python3", "./app.py"],
+        subprocess.Popen("source ./.venv/bin/activate && python3 ./app.py",
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
 

@@ -10,13 +10,11 @@ def run():
     remote_commit = subprocess.run(['git', 'rev-parse', 'origin/main'], capture_output=True, text=True).stdout.strip()
 
     if (local_commit == remote_commit):
-        pass
+        root = Window()
+        root.run()
     else:
         updater = Update()
         updater.run()
-
-    root = Window()
-    root.run()
 
 
 if __name__ == "__main__":
