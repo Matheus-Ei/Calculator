@@ -44,6 +44,8 @@ class Update(QWidget):
 
     def __dont_update(self):
         subprocess.Popen("source ./.venv/bin/activate && python3 ./window.py",
+                         shell=True,
+                         executable='/bin/bash',
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
         exit()
@@ -66,6 +68,8 @@ class Update(QWidget):
         self.__update()
 
         subprocess.Popen("source ./.venv/bin/activate && python3 ./app.py",
+                         shell=True,
+                         executable='/bin/bash',
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
 
