@@ -1,4 +1,5 @@
 import sys
+import os
 import subprocess
 from PyQt5.QtWidgets import (QApplication,
                              QWidget,
@@ -47,8 +48,9 @@ class Update(QWidget):
                          shell=True,
                          executable='/bin/bash',
                          stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-        exit()
+                         stderr=subprocess.PIPE,
+                         preexec_fn=os.setpgrp)
+        self.close()
 
     def __add_widgets(self):
         layout = QVBoxLayout()
@@ -71,9 +73,10 @@ class Update(QWidget):
                          shell=True,
                          executable='/bin/bash',
                          stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
+                         stderr=subprocess.PIPE,
+                         preexec_fn=os.setpgrp)
 
-        exit()
+        self.close()
 
     def run(self):
         self.__make()
