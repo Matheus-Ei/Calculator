@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import (QApplication,
                              QLabel)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
+from window import Window
 
 
 class Update(QWidget):
@@ -41,6 +42,13 @@ class Update(QWidget):
 
         return input_field
 
+    def __dont_update(self):
+        subprocess.Popen(["python3", "./window.py"],
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
+        self.close()
+        exit()
+
     def __add_widgets(self):
         layout = QVBoxLayout()
 
@@ -48,7 +56,7 @@ class Update(QWidget):
 
         self.__add_text(layout, "Atualizar a calculadora?", size=8)
         self.__add_button(layout, "Sim", self.__relaunch)
-        self.__add_button(layout, "Não", self.close)
+        self.__add_button(layout, "Não", self.__dont_update)
 
         self.setLayout(layout)
 
