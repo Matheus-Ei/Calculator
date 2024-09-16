@@ -16,7 +16,7 @@ class Update(QWidget):
         super().__init__()
 
     def __make(self):
-        self.setWindowTitle("Calculadora ATUALIZADA!!!")
+        self.setWindowTitle("Calculadora UPDATED!!!")
         self.setGeometry(300, 300, 300, 200)
 
     def __add_text(self, layout, text, font="Arial", size=24):
