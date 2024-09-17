@@ -44,16 +44,13 @@ class Update(QWidget):
         return input_field
 
     def __dont_update(self):
-        env = os.environ.copy()
-        env['QT_QPA_PLATFORM'] = 'xcb'
-
-        subprocess.Popen("QT_QPA_PLATFORM=xcb && source ./.venv/bin/activate && python3 ./window.py",
+        subprocess.Popen("python3 ../window.py",
                          shell=True,
                          executable='/bin/bash',
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE,
-                         env=env,
                          preexec_fn=os.setpgrp)
+
         self.close()
 
     def __add_widgets(self):
@@ -73,15 +70,11 @@ class Update(QWidget):
     def __relaunch(self):
         self.__update()
 
-        env = os.environ.copy()
-        env['QT_QPA_PLATFORM'] = 'xcb'
-
-        subprocess.Popen("QT_QPA_PLATFORM=xcb && source ./.venv/bin/activate && python3 ./app.py",
+        subprocess.Popen("python3 ../app.py",
                          shell=True,
                          executable='/bin/bash',
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE,
-                         env=env,
                          preexec_fn=os.setpgrp)
 
         self.close()
