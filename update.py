@@ -44,7 +44,7 @@ class Update(QWidget):
         return input_field
 
     def __dont_update(self):
-        subprocess.Popen("export QT_QPA_PLATFORM=xcb && source ./.venv/bin/activate && python3 ./window.py",
+        subprocess.Popen("QT_QPA_PLATFORM=xcb && source ./.venv/bin/activate && python3 ./window.py",
                          shell=True,
                          executable='/bin/bash',
                          stdout=subprocess.PIPE,
@@ -69,7 +69,7 @@ class Update(QWidget):
     def __relaunch(self):
         self.__update()
 
-        subprocess.Popen("export QT_QPA_PLATFORM=xcb && source ./.venv/bin/activate && python3 ./app.py",
+        subprocess.Popen("QT_QPA_PLATFORM=xcb && source ./.venv/bin/activate && python3 ./app.py",
                          shell=True,
                          executable='/bin/bash',
                          stdout=subprocess.PIPE,
