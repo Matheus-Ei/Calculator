@@ -45,7 +45,7 @@ class Window(QWidget):
     def __add_widgets(self):
         layout = QVBoxLayout()
 
-        self.header = self.__add_text(layout, "Calculadora!")
+        self.header = self.__add_text(layout, "Calculadora!!!!!!!!")
         self.results = self.__add_text(layout, "", size=12)
 
         self.__add_text(layout, "Funciona apenas com um digito sem espaços", size=8)
